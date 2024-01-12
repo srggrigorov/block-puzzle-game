@@ -1,4 +1,3 @@
-using Dreamloft.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ namespace Dreamloft.Game.Minigames.BlockGame
 {
 	[CreateAssetMenu(
 		fileName = "BlockGameDifficultySettings",
-		menuName = "Data/Minigames/Block Game/Difficulty Settings")]
+		menuName = "Data/Difficulty Settings")]
 	public class BlockGameDifficultySettings : ScriptableObject
 	{
 		[SerializeField]

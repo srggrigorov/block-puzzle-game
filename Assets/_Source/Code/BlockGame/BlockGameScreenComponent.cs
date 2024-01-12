@@ -6,6 +6,7 @@ using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Grid = Dreamloft.Game.Minigames.BlockGame.Grid;
 
@@ -14,23 +15,20 @@ namespace Dreamloft.Game.Ui.Screens
     public class BlockGameScreenComponent : MonoBehaviour
     {
         public event Action OnGameLost;
-        public event Action<AchievementTier> OnAchievementReceived;
+
 
         [SerializeField]
         private BlockGameDifficultySettings difficultySettings;
-        [SerializeField]
-        private AchievementsSettings achievementsSettings;
-        [SerializeField]
-        private AchievementProgressBarComponent achievementProgressBar;
         [SerializeField]
         private ShapesViewGeneratorComponent shapesViewGenerator;
         [SerializeField]
         private GridViewComponent gridView;
         [SerializeField]
         private TMP_Text scoreText;
-        //Placeholder end screen
         [SerializeField]
         private GameObject endGameScreen;
+        [SerializeField]
+        private Button endScreenButton;
         [SerializeField]
         private Transform[] shapeViewContainers;
         private Grid grid;
@@ -44,11 +42,15 @@ namespace Dreamloft.Game.Ui.Screens
         private bool gameEnded;
         private BlockGameDifficultyStats currentDifficultyStats;
 
-        private readonly List<AchievementTier> receivedAchievements = new();
+        private void Awake()
+        {
+            SetUp();
+        }
 
         public void SetUp()
         {
-            achievementProgressBar.SetUp(achievementsSettings);
+            endScreenButton.onClick.AddListener(RestartGame);
+            gameEnded = false;
             AddScore(0);
             if (!difficultySettings.TryGetDifficultyStats(0, out currentDifficultyStats))
             {
@@ -71,9 +73,9 @@ namespace Dreamloft.Game.Ui.Screens
 
                     switch (count)
                     {
-                        //shapeView.None(ShapeCanBePlaced) don't execute the method on all shapes for some reason.
                         case > 0 when shapeViews.Count(ShapeCanBePlaced) < 1:
                             OnGameLost?.Invoke();
+                            EndGame();
                             return;
                         case > 0:
                             return;
@@ -196,18 +198,14 @@ namespace Dreamloft.Game.Ui.Screens
         {
             score += points;
             scoreText.text = score.ToString();
-            if (achievementsSettings.TryGetAchievementTier(score, out var achievementTier) &&
-                achievementTier != null &&
-                !receivedAchievements.Contains(achievementTier.Value))
-            {
-                OnAchievementReceived?.Invoke(achievementTier.Value);
-                receivedAchievements.Add(achievementTier.Value);
-            }
-
-            achievementProgressBar.SetScore(score);
         }
 
-        public void EndGame()
+        private void RestartGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void EndGame()
         {
             gameEnded = true;
             endGameScreen.SetActive(true);
@@ -237,19 +235,6 @@ namespace Dreamloft.Game.Ui.Screens
             bool canBePlaced = grid.ShapeCanBePlacedAnywhere(shapeView.Shape);
             shapeView.SetInteractable(canBePlaced);
             return canBePlaced;
-        }
-
-        public void Close()
-        {
-            gameEnded = true;
-            shapeViews?.Dispose();
-            shapeViewContainers.ForEach(container =>
-            {
-                for (int i = 0; i < container.childCount; i++)
-                {
-                    Destroy(container.GetChild(i).gameObject);
-                }
-            });
         }
     }
 }
