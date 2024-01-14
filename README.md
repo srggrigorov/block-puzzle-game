@@ -1,4 +1,5 @@
 ### Block Puzzle Game
+![Gameplay](Gameplay.gif)
 
 **Unity : 2022.3.12f1**
 
@@ -16,7 +17,7 @@ Block Puzzle Game is a captivating puzzle experience where you strategically pla
 3. Aim for the highest score and play for as long as you can!
 
 **Getting Started:**
-1. Check "Releases" tab to find the .apk file.
+1. Check ["Releases"](https://github.com/srggrigorov/block-puzzle-game/releases/tag/Android) tab to find the .apk file.
 2. Download file and put it to your Android device storage.
 3. Run the file, install the game and enjoy!
 
@@ -41,7 +42,7 @@ Block Puzzle Game - захватывающий пазл, в котором вы 
 3. Стремитесь к наивысшему счету и играйте так долго, как сможете!
 
 **Начало игры:**
-1. Проверьте вкладку "Релизы" для поиска .apk файла.
+1. Проверьте вкладку ["Релизы"](https://github.com/srggrigorov/block-puzzle-game/releases/tag/Android) для поиска .apk файла.
 2. Скачайте файл и поместите его в хранилище вашего Android-устройства.
 3. Запустите файл, установите игру и наслаждайтесь!
 
