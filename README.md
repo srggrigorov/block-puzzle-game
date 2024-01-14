@@ -1,5 +1,5 @@
 ### Block Puzzle Game
-![Gameplay](Gameplay.gif)
+<img src="Gameplay.gif" alt="Gameplay" width="300"/>
 
 **Unity : 2022.3.12f1**
 
