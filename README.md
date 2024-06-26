@@ -1,7 +1,7 @@
 ### Block Puzzle Game
 <img src="Gameplay.gif" alt="Gameplay" width="300"/>
 
-**Unity : 2022.3.12f1**
+**Unity : 2022.3.18f1**
 
 **Description:**
 Block Puzzle Game is a captivating puzzle experience where you strategically place blocks on a 9x9 board. Your goal is to fill rows, columns, or squares to clear them from the game and achieve the highest score.

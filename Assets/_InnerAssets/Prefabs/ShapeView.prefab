@@ -90,11 +90,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1913420738350427303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97ef26346cf1447a8ef8209c879a24bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 04dab720090739a48acf4d1f2801fe41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shapeCellPrefab: {fileID: 4416023247680076553, guid: 8a8e9de8c9e23ed4ebe17a0dd60821b8, type: 3}
-  canvasGroup: {fileID: 8124699331863903851}
+  _cellViewPrefab: {fileID: 7498686744335510128, guid: 8a8e9de8c9e23ed4ebe17a0dd60821b8, type: 3}
+  _canvasGroup: {fileID: 8124699331863903851}
+  _rectTransform: {fileID: 920889589275945892}
 --- !u!222 &2473349081248563881
 CanvasRenderer:
   m_ObjectHideFlags: 0
